@@ -29,8 +29,6 @@ public class NeighbourProfileActivity extends AppCompatActivity {
     @BindView(R.id.neighbour_image)
     ImageView myNeighbourAvatarUrl;
 
-    @BindView(R.id.return_Button)
-    ImageButton return_Button;
 
     @BindView(R.id.neighbour_favorite_btn)
     FloatingActionButton myNeighbourFavoriteButton;
@@ -68,7 +66,6 @@ public class NeighbourProfileActivity extends AppCompatActivity {
                 load(myNeighbour.getAvatarUrl())
                 .into(myNeighbourAvatarUrl);
         defineStarColor();
-        return_Button.setOnClickListener(v -> finish());
         myNeighbourFavoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

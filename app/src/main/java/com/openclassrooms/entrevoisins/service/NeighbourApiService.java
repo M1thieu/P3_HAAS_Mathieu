@@ -45,3 +45,4 @@ public interface NeighbourApiService {
 
     void toggleFavoriteNeighbour(Neighbour neighbour);
 }
+

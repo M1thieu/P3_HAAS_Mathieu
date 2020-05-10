@@ -50,8 +50,6 @@ public class NeighboursListTest {
     private ListNeighbourActivity mActivity;
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
-    //private List<Neighbour> favorites = NeighbourApiService.getFavoriteNeighbours();
-    //implementation des classes à utiliser
 
     @Rule
     public ActivityTestRule<ListNeighbourActivity> mActivityRule =
@@ -108,8 +106,6 @@ public class NeighboursListTest {
 
     @Test
     public void myNeighboursList_showFavorite() {
-        //TODO : verifier que la liste de voisins favoris est vide
-        //favorites.clear();
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
 
@@ -117,8 +113,6 @@ public class NeighboursListTest {
         pressBack();
         onView(withContentDescription("Favorites")).perform(click());
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed())).check(withItemCount(1));
-        //TODO : cocher button rentrer dans la vue et verifier que favoris est vide
-        // .check(withItemCount(0)); ?
 
     }
 

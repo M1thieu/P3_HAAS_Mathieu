@@ -54,7 +54,7 @@ public class Neighbour implements Parcelable {
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "Neighbour{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 '}';
