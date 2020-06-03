@@ -103,14 +103,6 @@ public class NeighbourFragment extends Fragment {
         mApiService.deleteNeighbour(event.neighbour);
         initList();
     }
-    @Subscribe
-    //methode permettant d'ouvrir less details de l'utilisateur
-    public void onNeighbourDetails(SeeNeighbourDetailsEvent event) {
-        Intent intent = new Intent(getContext(), NeighbourProfileActivity.class);
-        intent.putExtra("neighbour",event.neighbour);
-        startActivity(intent);
-    }
-
 
 
 
