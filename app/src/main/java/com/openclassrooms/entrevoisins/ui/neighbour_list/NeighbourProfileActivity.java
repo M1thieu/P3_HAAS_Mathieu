@@ -16,6 +16,8 @@ import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -23,12 +25,17 @@ public class NeighbourProfileActivity extends AppCompatActivity {
 
     Neighbour myNeighbour; //import neighbour
 
+    @BindView(R.id.neighbour_name)
+    TextView NeighbourName;
+
     @BindView(R.id.cardview_name)
     TextView myNeighbourName;
 
     @BindView(R.id.neighbour_image)
     ImageView myNeighbourAvatarUrl;
 
+    @BindView(R.id.return_Button)
+    ImageButton return_Button;
 
     @BindView(R.id.neighbour_favorite_btn)
     FloatingActionButton myNeighbourFavoriteButton;
@@ -56,7 +63,8 @@ public class NeighbourProfileActivity extends AppCompatActivity {
 
 
 
-        myNeighbour = (Neighbour) getIntent().getExtras().getParcelable("neighbour");
+        myNeighbour = (Neighbour) Objects.requireNonNull(getIntent().getExtras()).getParcelable("neighbour");
+        NeighbourName.setText(myNeighbour.getName());
         myNeighbourName.setText(myNeighbour.getName());
         cardview_location.setText(myNeighbour.getAddress());
         cardview_phone_number.setText(myNeighbour.getPhoneNumber());
@@ -66,6 +74,12 @@ public class NeighbourProfileActivity extends AppCompatActivity {
                 load(myNeighbour.getAvatarUrl())
                 .into(myNeighbourAvatarUrl);
         defineStarColor();
+        return_Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         myNeighbourFavoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,8 +91,9 @@ public class NeighbourProfileActivity extends AppCompatActivity {
     }
     private void defineStarColor() {
         if (myNeighbour.isFavoris()){
-            myNeighbourFavoriteButton.setImageResource(R.drawable.ic_star_white_24dp);
+            myNeighbourFavoriteButton.setImageResource(R.drawable.ic_star_yellow_24dp);
         }
-        else {myNeighbourFavoriteButton.setImageResource(R.drawable.ic_star_border_white_24dp);}
+        else {myNeighbourFavoriteButton.setImageResource(R.drawable.ic_star_border_yellow_24dp);}
     }
 }
+
